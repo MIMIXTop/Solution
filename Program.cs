@@ -4,7 +4,16 @@ using System.Diagnostics.CodeAnalysis;
 
 class Program
 {
-    public int second(int[] arr)
+    static void swapBeginEnd(int[] arr)// Новый метод меняющий первый и последний элемент массива местами 
+    {
+        int temp;
+        
+        temp = arr[0];
+        arr[0] = arr[arr.Length - 1];
+        arr[arr.Length - 1] = temp;
+    }
+    
+    static int second(int[] arr)
     {
         int first = arr[0];
         int second = first;
@@ -20,7 +29,7 @@ class Program
         return second;
     }
 
-    public void swapMAX_MIN(ref int[] arr)
+    static void swapMAX_MIN(ref int[] arr)
     {
         int temp, max = arr[0], min = arr[0];
         int max_i = 0, min_i = 0;
@@ -47,16 +56,15 @@ class Program
         arr[min_i] = temp;
     }
 
-    public void print(int[] arr)
+    static void print(int[] arr)
     {
         foreach (int now in arr)
         {
             Console.Write($"{now} ");
         }
-        Console.ReadKey();
     }
 
-    public int unique_elem(int[] arr)
+    static int unique_elem(int[] arr)
     {
         HashSet<int> hs = new HashSet<int>();
         foreach (var now in arr)
@@ -73,7 +81,7 @@ class Program
         return hs.Count;
     }
 
-    public int Sum(int[] arr)
+    static int Sum(int[] arr)
     {
         int sumArr = 0;
 
@@ -84,7 +92,7 @@ class Program
         return sumArr;
     }
 
-    public int maxARR(int[] arr)
+    static int maxARR(int[] arr)
     {
         int max = arr[1];
 
@@ -96,7 +104,7 @@ class Program
         return max;
     }
 
-    public void sort(int[] arr)
+    static void sort(int[] arr)
     {
         int temp;
 
@@ -114,7 +122,7 @@ class Program
         }
     }
 
-    public void sortMin(int[] arr)
+    static void sortMin(int[] arr)
     {
         int temp;
 
@@ -132,7 +140,7 @@ class Program
         }
     }
 
-    public void change(int[] arr)
+    static void change(int[] arr)
     {
         List<int> temp = new List<int>();
         
@@ -152,7 +160,7 @@ class Program
         }
     }
 
-    public int first_unique(int[] arr)
+    static int first_unique(int[] arr)
     {
         HashSet<int> hs = new HashSet<int>();
         foreach (var now in arr)
@@ -174,8 +182,7 @@ class Program
         bool finish = true;
         int temp;
         Random rand = new Random();
-        Program pr = new Program();
-
+        
         Console.WriteLine("Введите размер массива: ");
         int lenghtArrey;
         
@@ -235,49 +242,53 @@ class Program
             switch (n)
             {
                 case 1:
-                    Console.WriteLine($"Сумма равна: {pr.Sum(arr)}");
+                    Console.WriteLine($"Сумма равна: {Sum(arr)}");
                     Console.ReadKey();
                     break;
                 case 2:
-                    Console.WriteLine($"{pr.maxARR(arr)}");
+                    Console.WriteLine($"{maxARR(arr)}");
                     Console.ReadKey();
                     break;
                 case 3:
-                    Console.WriteLine($"Второй по значению {pr.second(arr)}");
+                    Console.WriteLine($"Второй по значению {second(arr)}");
                     Console.ReadKey();
                     break;
                 case 4:
-                    Console.WriteLine($"Количество уникальных элементов: {pr.unique_elem(arr)}");
+                    Console.WriteLine($"Количество уникальных элементов: {unique_elem(arr)}");
                     Console.ReadKey();
                     break;
                 case 5:
-                    Console.WriteLine($"Первый уникальных элементов: {pr.first_unique(arr)}");
+                    Console.WriteLine($"Первый уникальных элементов: {first_unique(arr)}");
                     Console.ReadKey();
                     break;
                 case 6:
-                    pr.swapMAX_MIN(ref arr);
-                    pr.print(arr);
+                    swapMAX_MIN(ref arr);
+                    print(arr);
+                    Console.ReadKey();
                     break;
                 case 7:
-                    temp = arr[0];
-                    arr[0] = arr[arr.Length - 1];
-                    arr[arr.Length - 1] = temp;
-                    pr.print(arr);
+                    swapBeginEnd(arr);
+                    print(arr);
+                    Console.ReadKey();
                     break;
                 case 8:
-                    pr.sort(arr);
-                    pr.print(arr);
+                    sort(arr);
+                    print(arr);
+                    Console.ReadKey();
                     break;
                 case 9:
-                    pr.sortMin(arr);
-                    pr.print(arr);
+                    sortMin(arr);
+                    print(arr);
+                    Console.ReadKey();
                     break;
                 case 10:
-                    pr.change(arr);
-                    pr.print(arr);
+                    change(arr);
+                    print(arr);
+                    Console.ReadKey();
                     break;
                 case 11:
-                    pr.print(arr);
+                    print(arr);
+                    Console.ReadKey();
                     break;
                 case 0:
                     finish = false;
